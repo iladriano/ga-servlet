@@ -1,0 +1,23 @@
+Have you ever run into an: 
+
+  java.lang.IllegalStateException: STREAM 
+
+from requesting a: /ga.jsp ?
+
+Well, you're not alone.
+
+This version avoids issues introduced by jsp processing or runtime.
+The only difference is that you'll need to compile and map the servlet in web.xml
+
+  <servlet>
+    <servlet-name>ga-servlet</servlet-name>
+    <servlet-class>util.GaServlet</servlet-class>
+    <load-on-startup>300</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ga-servlet</servlet-name>
+    <url-pattern>/ga</url-pattern>
+  </servlet-mapping>
+
+Remember to change the web property id.
