@@ -20,4 +20,7 @@ The only difference is that you'll need to compile and map the servlet in web.xm
     <url-pattern>/ga</url-pattern>
   </servlet-mapping>
 
-Remember to change the web property id.
+An example image for server side analytics:
+
+<img src="<%= util.JspHelper.gaGetImageUrl("/ga", "UA-12345678-9",  request) %>" alt="-" height="1" width="1" /> 
+

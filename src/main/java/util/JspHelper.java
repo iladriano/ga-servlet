@@ -7,18 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 
 public class JspHelper {
 
-    // Web property id UA- needs to be replaced with MO- for mobile.
-    private static final String GA_ACCOUNT = "UA-12345678-9";
-
-    // Mapped url
-    private static final String GA_PIXEL = "/ga";
-
-    public static String googleAnalyticsGetImageUrl(
+    /**
+     * @param gaServletPath the ga servlet path ex.: "/ga"
+     * @param webPropertyId the property id UA- needs to be replaced with MO- for mobile ex.: "UA-12345678-9"
+     * @param request
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    public static String gaGetImageUrl(
+            String gaServletPath,
+            String webPropertyId,
         HttpServletRequest request) throws UnsupportedEncodingException {
       StringBuilder url = new StringBuilder();
       url.append(request.getContextPath());
-      url.append(GA_PIXEL + "?");
-      url.append("utmac=").append(GA_ACCOUNT);
+      url.append(gaServletPath + "?");
+      url.append("utmac=").append(webPropertyId);
       url.append("&utmn=").append(Integer.toString((int) (Math.random() * 0x7fffffff)));
 
       String referer = request.getHeader("referer");
